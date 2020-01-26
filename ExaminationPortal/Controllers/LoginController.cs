@@ -25,10 +25,10 @@ namespace FinalProject.Controllers
         public Response Login([FromBody]T_Users user)
         {
             Response response = new Response();
-            string encData = null;
+            //string encData = null;
             List<T_Users> users = dalObj.T_Users.ToList();
-            MySecurityLib.Security.Encrypt(user.Password, out encData);
-            user.Password = encData;
+            //MySecurityLib.Security.Encrypt(user.Password, out encData);
+            //user.Password = encData;
             if (user.EmailId != null && user.Password != null)
             {
                     var validate = (from u in users
@@ -67,10 +67,10 @@ namespace FinalProject.Controllers
             {
                 try
                 {
-                    string encdata = null;
-                    MySecurityLib.Security.Encrypt(data.Password, out encdata);
+                    //string encdata = null;
+                    //MySecurityLib.Security.Encrypt(data.Password, out encdata);
 
-                    data.Password = encdata;
+                    //data.Password = encdata;
                     dalObj.T_Users.Add(data);
                     dalObj.SaveChanges();
                     response.Data = data;

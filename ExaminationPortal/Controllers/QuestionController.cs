@@ -53,7 +53,52 @@ namespace FinalProject.Controllers
                 return response;
             }
         }
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("api/Questions/{id}")]
+        public Response GetQuestionBySubjects(int id)
+        {
+            try
+            {
+                List<T_Question> quesList = dalobj.T_Question.ToList();
+                List<T_Subject> subList = dalobj.T_Subject.ToList();
 
+                var list = (from ques in quesList
+                            where ques.SubId == id
+                            select new
+                            {
+                            ques.Question,
+                            ques.Opt1,
+                            ques.Opt2,
+                            ques.Opt3,
+                            ques.Opt4,
+                            ques.CorrectAns
+                            }).ToList();
+                if (list != null)
+                {
+                    response.Data = list;
+                    response.Status = "success";
+                    response.Error = null;
+                    logger.Log("List of Questions displayed");
+                    return response;
+                }
+                else
+                {
+                    response.Data = null;
+                    response.Status = "failed";
+                    response.Error = null;
+                    logger.Log("List of Questions is Empty");
+                    return response;
+                }
+            }
+            catch (Exception cause)
+            {
+                response.Data = cause.Message;
+                response.Status = "Failed";
+                response.Error = cause;
+                logger.Log("Exception occured returned Erroror msg");
+                return response;
+            }
+        }
         // GET: api/Question/5
         public Response Get(int id)
         {

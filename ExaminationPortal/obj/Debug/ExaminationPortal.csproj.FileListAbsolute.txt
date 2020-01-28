@@ -15,6 +15,7 @@ D:\Project\ExaminationPortal\ExaminationPortal\bin\ExaminationPortal.dll.config
 D:\Project\ExaminationPortal\ExaminationPortal\bin\ExaminationPortal.dll
 D:\Project\ExaminationPortal\ExaminationPortal\bin\ExaminationPortal.pdb
 D:\Project\ExaminationPortal\ExaminationPortal\bin\EntityFramework.dll
+D:\Project\ExaminationPortal\ExaminationPortal\bin\EntityFramework.SqlServer.dll
 D:\Project\ExaminationPortal\ExaminationPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Project\ExaminationPortal\ExaminationPortal\bin\MyLoggerLib.dll
 D:\Project\ExaminationPortal\ExaminationPortal\bin\MySecurityLib.dll
@@ -32,6 +33,7 @@ D:\Project\ExaminationPortal\ExaminationPortal\bin\MySecurityLib.pdb
 D:\Project\ExaminationPortal\ExaminationPortal\bin\MyUnitTestProject.pdb
 D:\Project\ExaminationPortal\ExaminationPortal\bin\UnitTesting.pdb
 D:\Project\ExaminationPortal\ExaminationPortal\bin\EntityFramework.xml
+D:\Project\ExaminationPortal\ExaminationPortal\bin\EntityFramework.SqlServer.xml
 D:\Project\ExaminationPortal\ExaminationPortal\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Project\ExaminationPortal\ExaminationPortal\bin\System.Net.Http.Formatting.xml
 D:\Project\ExaminationPortal\ExaminationPortal\bin\System.Web.Http.xml
@@ -40,5 +42,3 @@ D:\Project\ExaminationPortal\ExaminationPortal\bin\Newtonsoft.Json.xml
 D:\Project\ExaminationPortal\ExaminationPortal\bin\System.Web.Http.WebHost.xml
 D:\Project\ExaminationPortal\ExaminationPortal\obj\Debug\ExaminationPortal.dll
 D:\Project\ExaminationPortal\ExaminationPortal\obj\Debug\ExaminationPortal.pdb
-D:\Project\ExaminationPortal\ExaminationPortal\bin\EntityFramework.SqlServer.dll
-D:\Project\ExaminationPortal\ExaminationPortal\bin\EntityFramework.SqlServer.xml

@@ -45,12 +45,12 @@
     </Key>
     <Property Name="QueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SubId" Type="int" Nullable="false" />
-    <Property Name="Question" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="Opt1" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Opt2" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Opt3" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Opt4" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="CorrectAns" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Question" Type="varchar(max)" Nullable="false" />
+    <Property Name="Opt1" Type="varchar(max)" Nullable="false" />
+    <Property Name="Opt2" Type="varchar(max)" Nullable="false" />
+    <Property Name="Opt3" Type="varchar(max)" Nullable="false" />
+    <Property Name="Opt4" Type="varchar(max)" Nullable="false" />
+    <Property Name="CorrectAns" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="T_Result">
     <Key>

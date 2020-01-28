@@ -81,21 +81,28 @@ namespace ExaminationPortal.Controllers
         {
             try
             {
-                T_Result resToFind = dalobj.T_Result.Find(id);
-                if (resToFind != null)
+                List<T_Result> list = dalobj.T_Result.ToList();
+                List<T_Subject> subj = dalobj.T_Subject.ToList();
+
+                var loggeduserResult = (from res in list
+                                        join s in subj on res.SubId equals s.SubId
+                                        where res.UserId == id
+                                        select new { res, s.SubName });
+
+                if (loggeduserResult != null)
                 {
-                    response.Data = resToFind;
+                    response.Data = loggeduserResult;
                     response.Status = "success";
                     response.Error = null;
-                    logger.Log("specific result displayed using id");
+                    logger.Log("current logged user result entire Result displayed");
                     return response;
                 }
                 else
                 {
                     response.Data = null;
-                    response.Status = "failed";
+                    response.Status = "Not yet given any exam";
                     response.Error = null;
-                    logger.Log("specific result not found using id");
+                    logger.Log("current logged user result not found");
                     return response;
                 }
 
@@ -112,26 +119,34 @@ namespace ExaminationPortal.Controllers
         //[System.Web.Http.HttpPost]
         //[System.Web.Http.Route("api/Results")]
         // POST: api/Results
-        public Response Post([FromBody]T_Result res)
+        public Response Post([FromBody]UserScore tally)
         {
             try
             {
-                if (res != null)                    // afterwards check valid subject or not so if/else loop ...
+
+                if (tally != null)                    // afterwards check valid subject or not so if/else loop ...
                 {
-                    dalobj.T_Result.Add(res);
+
+                    T_Result score = new T_Result();
+
+                    score.UserId = tally.UserId;
+                    score.SubId = tally.SubId;
+                    score.CntCorrectAns = tally.CntCorrectAns;
+
+                    dalobj.T_Result.Add(score);
                     dalobj.SaveChanges();
                     response.Data = null;
                     response.Status = "success";
                     response.Error = null;
-                    logger.Log("result added in db");
+                    logger.Log("Result added in db");
                     return response;
                 }
                 else
                 {
                     response.Data = null;
-                    response.Status = "Empty fields";
+                    response.Status = "Failed";
                     response.Error = null;
-                    logger.Log("result insertion failed due to empty fields");
+                    logger.Log("Result insertion failed");
                     return response;
                 }
             }

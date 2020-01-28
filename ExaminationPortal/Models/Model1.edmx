@@ -50,12 +50,12 @@
           </Key>
           <Property Name="QueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SubId" Type="int" Nullable="false" />
-          <Property Name="Question" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="Opt1" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Opt2" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Opt3" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Opt4" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CorrectAns" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Question" Type="varchar(max)" Nullable="false" />
+          <Property Name="Opt1" Type="varchar(max)" Nullable="false" />
+          <Property Name="Opt2" Type="varchar(max)" Nullable="false" />
+          <Property Name="Opt3" Type="varchar(max)" Nullable="false" />
+          <Property Name="Opt4" Type="varchar(max)" Nullable="false" />
+          <Property Name="CorrectAns" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="T_Result">
           <Key>
@@ -313,12 +313,12 @@
           </Key>
           <Property Name="QueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SubId" Type="Int32" Nullable="false" />
-          <Property Name="Question" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Opt1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Opt2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Opt3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Opt4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CorrectAns" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Nullable="false" Unicode="false" />
+          <Property Name="Opt1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Opt2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Opt3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Opt4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CorrectAns" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="T_Subject" Relationship="Self.FK_T_T_Question_ToT_SUBJECT" FromRole="T_Question" ToRole="T_Subject" />
         </EntityType>
         <EntityType Name="T_Result">

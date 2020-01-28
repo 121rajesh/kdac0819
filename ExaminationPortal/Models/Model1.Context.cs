@@ -14,7 +14,10 @@ namespace ExaminationPortal.Models
     using System.Data.Entity.Core.Objects;
     using System.Data.Entity.Infrastructure;
 
-    using System.Linq;
+    //using System.Data.Entity.Infrastructure;
+    //using System.Data.Objects;
+    //using System.Data.Objects.DataClasses;
+    //using System.Linq;
 
     public partial class OnlineExamDBEntities : DbContext
     {

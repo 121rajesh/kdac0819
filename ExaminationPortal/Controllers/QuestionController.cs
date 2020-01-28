@@ -7,6 +7,8 @@ using System.Web.Http;
 using FinalProject.Models;
 using ExaminationPortal.Controllers;
 using ExaminationPortal.Models;
+using System.Data.Entity.Validation;
+
 namespace FinalProject.Controllers
 {
 
@@ -66,6 +68,7 @@ namespace FinalProject.Controllers
                             where ques.SubId == id
                             select new
                             {
+                            ques.QueId,
                             ques.Question,
                             ques.Opt1,
                             ques.Opt2,
@@ -204,6 +207,7 @@ namespace FinalProject.Controllers
                 logger.Log("Exception occured returned Erroror msg");
                 return response;
             }
+
         }
 
         // PUT: api/Question/5
@@ -240,12 +244,72 @@ namespace FinalProject.Controllers
 
                 }
             }
+            //catch (Exception cause)
+            //{
+            //    response.Data = cause.Message;
+            //    response.Status = "Failed";
+            //    response.Error = cause;
+            //    logger.Log("Exception occured returned Error msg");
+            //    return response;
+            //}
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var errors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in errors.ValidationErrors)
+                    {
+                        // get the error message 
+                        string errorMessage = validationError.ErrorMessage;
+                        response.Data = errorMessage;
+                        return response;
+                    }
+                }
+                return response;
+            }
+        }
+
+        [HttpPost]
+        [System.Web.Http.Route("api/Question/score")]
+        public Response Post([FromBody] List<UserAns> que)
+        {
+
+            try
+            {
+                int marks = 0;
+
+
+                List<T_Question> questions = dalobj.T_Question.ToList();
+
+                foreach (var q in que)
+                {
+                    foreach (var aq in questions)
+                    {
+                        if (q.QueId == aq.QueId)
+                        {
+                            if (q.value == aq.CorrectAns)
+                            {
+                                marks++;
+                            }
+                        }
+
+                    }
+                }
+
+                response.Data = marks;
+                response.Status = "success";
+                response.Error = null;
+                logger.Log("marks displayed");
+                return response;
+
+            }
+
+
             catch (Exception cause)
             {
                 response.Data = cause.Message;
                 response.Status = "Failed";
                 response.Error = cause;
-                logger.Log("Exception occured returned Erroror msg");
+                logger.Log("Exception occured returned Error msg");
                 return response;
             }
         }

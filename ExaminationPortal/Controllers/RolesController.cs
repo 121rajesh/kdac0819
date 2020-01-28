@@ -25,35 +25,68 @@ namespace FinalProject.Controllers
 
         public Response Get()
         {
-            List<T_Roles> roles = dalObj.T_Roles.ToList();
-            response.Data = roles;
-            response.Status = "Success";
-            response.Error = null;
-            logger.Log("List displayed for roles");
-            return response;
+            try
+            {
+                List<T_Roles> roles = dalObj.T_Roles.ToList();
+                response.Data = roles;
+                response.Status = "Success";
+                response.Error = null;
+                logger.Log("List displayed for roles");
+                return response;
+            }
+            catch (Exception cause)
+            {
+                response.Data = cause.Message;
+                response.Status = "Failed";
+                response.Error = cause;
+                logger.Log("Exception occured returned Error msg");
+                return response;
+            }
         }
 
         // GET: api/Roles/5
         public Response Get(int id)
         {
-            response.Data = dalObj.T_Roles.Find(id);
-            response.Status = "Success";
-            response.Error = null;
-            logger.Log("Displayed Roles");
-            return response;
+            try
+            {
+                response.Data = dalObj.T_Roles.Find(id);
+                response.Status = "Success";
+                response.Error = null;
+                logger.Log("Displayed Roles");
+                return response;
+            }
+            catch (Exception cause)
+            {
+                response.Data = cause.Message;
+                response.Status = "Failed";
+                response.Error = cause;
+                logger.Log("Exception occured returned Error msg");
+                return response;
+            }
         }
 
         // POST: api/Roles
         public Response Post([FromBody]T_Roles role)
         {
-            //dalObj.T_Roles.Add(role);
-            //dalObj.SaveChanges();
-            dalObj.Proc_AddRole(role.RoleName);
-            response.Data = null;    
-            response.Status = "Success";
-            response.Error = null;
-            logger.Log("Added new roles");
-            return response;
+            try
+            {
+                //dalObj.T_Roles.Add(role);
+                //dalObj.SaveChanges();
+                dalObj.Proc_AddRole(role.RoleName);
+                response.Data = null;
+                response.Status = "Success";
+                response.Error = null;
+                logger.Log("Added new roles");
+                return response;
+            }
+            catch (Exception cause)
+            {
+                response.Data = cause.Message;
+                response.Status = "Failed";
+                response.Error = cause;
+                logger.Log("Exception occured returned Error msg");
+                return response;
+            }
         }
 
         // PUT: api/Roles/5
@@ -62,13 +95,24 @@ namespace FinalProject.Controllers
             //T_Roles roleobj = dalObj.T_Roles.Find(id);
             //roleobj.RoleName = roles.RoleName;
             //dalObj.SaveChanges();
-            
-            dalObj.Proc_ModifyRole(id, roles.RoleName);
-            response.Data = null;
-            response.Status = "Success";
-            response.Error = null;
-            logger.Log("Roles Edited");
-            return response;
+
+            try
+            {
+                dalObj.Proc_ModifyRole(id, roles.RoleName);
+                response.Data = null;
+                response.Status = "Success";
+                response.Error = null;
+                logger.Log("Roles Edited");
+                return response;
+            }
+            catch (Exception cause)
+            {
+                response.Data = cause.Message;
+                response.Status = "Failed";
+                response.Error = cause;
+                logger.Log("Exception occured returned Error msg");
+                return response;
+            }
         }
 
         // DELETE: api/Roles/5
@@ -78,12 +122,23 @@ namespace FinalProject.Controllers
             //dalObj.T_Roles.Remove(role);
             //dalObj.SaveChanges();
 
-            dalObj.Proc_RemoveRole(id);
-            response.Data = null;
-            response.Status = "Success";
-            response.Error = null;
-            logger.Log("Role Deleted");
-            return response;
+            try
+            {
+                dalObj.Proc_RemoveRole(id);
+                response.Data = null;
+                response.Status = "Success";
+                response.Error = null;
+                logger.Log("Role Deleted");
+                return response;
+            }
+            catch (Exception cause)
+            {
+                response.Data = cause.Message;
+                response.Status = "Failed";
+                response.Error = cause;
+                logger.Log("Exception occured returned Error msg");
+                return response;
+            }
         }
     }
 }
